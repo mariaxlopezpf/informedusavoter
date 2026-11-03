@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinellas County Ballot Guide — Nov 3, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f7fb; --paper:#ffffff; --ink:#0f1b33; --muted:#5a6680; --line:#dfe4ee;
+    --accent:#1b3a8c; --accent-soft:#e6ecfa; --red:#d62839; --red-soft:#fde8ea; --navy:#0b1f4d;
+    --warn:#d62839; --warn-soft:#fdf0f1;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0a1226; --paper:#111b36; --ink:#eef2fa; --muted:#9aa6c2; --line:#24304f;
+      --accent:#8fb0ff; --accent-soft:#1a2a55; --red:#ff5a67; --red-soft:#3a1720; --navy:#060d22;
+      --warn:#ff5a67; --warn-soft:#2a1420; }
+  }
+  .flagband{height:8px;background:repeating-linear-gradient(90deg,var(--red) 0 40px,#fff 40px 52px,var(--accent) 52px 92px,#fff 92px 104px)}
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,#1b3a8c 70%,#24489f 100%);color:#fff;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;opacity:.13;pointer-events:none;
+    background-image:radial-gradient(circle at 12px 12px,#fff 1.6px,transparent 2px);background-size:34px 34px;
+    -webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 100%);mask-image:linear-gradient(90deg,transparent 35%,#000 100%)}
+  .hero header{position:relative;z-index:1;padding-bottom:30px}
+  .hero .eyebrow{color:#ffb3ba}
+  .hero h1{color:#fff}
+  .hero h1 em{font-style:normal;color:#ff6b78}
+  .hero .lede{color:#d6def2}
+  .hero .fact{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+  .toolkit{margin-top:22px!important}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,sans-serif}
+  header{padding:40px 20px 0;max-width:980px;margin:0 auto}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.05;margin:8px 0 12px}
+  .lede{color:var(--muted);max-width:680px;margin:0 0 18px}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+  .fact{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px}
+  .fact b{font-weight:600}
+  nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+  .tabs{max-width:980px;margin:0 auto;display:flex;gap:4px;padding:0 20px;overflow-x:auto}
+  .tab{appearance:none;border:0;background:none;color:var(--muted);font:600 14px Inter,sans-serif;padding:14px 14px 12px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+  .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--red)}
+  main{max-width:980px;margin:0 auto;padding:24px 20px 60px}
+  .panel{display:none}.panel.active{display:block}
+  .note{background:var(--warn-soft);color:var(--ink);border-left:3px solid var(--warn);padding:12px 14px;border-radius:6px;margin:0 0 22px;font-size:14px}
+  h2{font-family:Fraunces,Georgia,serif;font-size:24px;margin:30px 0 4px;color:var(--navy)}
+  @media (prefers-color-scheme: dark){h2{color:var(--ink)}}
+  h2::before{content:"★ ";color:var(--red);font-size:.75em;vertical-align:.12em}
+  h2:first-of-type{margin-top:6px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+  .race{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:12px;padding:16px 16px 12px;box-shadow:0 1px 2px rgba(15,27,51,.04)}
+  .race h3{margin:0 0 2px;font-size:15.5px}
+  .race .who{color:var(--muted);font-size:12.5px;margin-bottom:10px}
+  .cand{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px dashed var(--line)}
+  .cand:first-of-type{border-top:0}
+  .pty{flex:none;min-width:40px;text-align:center;font-size:11px;font-weight:600;letter-spacing:.04em;border:1px solid var(--line);border-radius:6px;padding:2px 5px;color:var(--muted);margin-top:2px}
+  .cname{font-weight:600}
+  .cdesc{color:var(--muted);font-size:13px}
+  .inc{font-size:11px;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:1px}
+  .measure{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:12px;padding:16px;margin-bottom:12px}
+  .measure h3{margin:0 0 6px;font-size:16px}
+  .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--red);background:var(--red-soft);border-radius:4px;padding:2px 7px;margin-bottom:8px}
+  .yn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+  .yn div{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13.5px}
+  .yn b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+  .context{font-size:13px;color:var(--muted);margin-top:8px}
+  ul.decided{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+  .sources{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .sources a{color:var(--accent)}
+  .legend{font-size:13px;color:var(--muted);margin:-6px 0 18px}
+  .stand{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+  .stand-h{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .stand a{display:block;color:var(--ink);text-decoration:none;font-size:13.5px;padding:5px 0;line-height:1.35}
+  .stand a:hover{color:var(--accent);text-decoration:underline}
+  .stand a span{display:block;font-size:11.5px;color:var(--muted)}
+  .stand a::before{content:"↗ ";color:var(--red)}
+  .toolkit{max-width:980px;margin:0 auto 22px;padding:0 20px}
+  .toolkit details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .toolkit summary{cursor:pointer;font-weight:600;font-size:15px}
+  .toolkit summary span{font-weight:400;color:var(--muted);font-size:13px;margin-left:6px}
+  .tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}
+  .tk-grid a{display:block;border:1px solid var(--line);border-radius:10px;padding:12px;text-decoration:none;color:var(--ink)}
+  .tk-grid a:hover{border-color:var(--accent)}
+  .tk-grid b{display:block;margin-bottom:2px}
+  .tk-grid small{color:var(--muted);font-size:12.5px}
+  .steps{margin:16px 0 4px;padding-left:20px;font-size:14px}
+  .steps li{margin:4px 0}
+  .callout{font-size:13px;color:var(--muted);margin-top:10px}
+  .cname{all:unset;cursor:pointer;font-weight:600;color:var(--ink);border-bottom:1.5px dotted var(--accent)}
+  .cname:hover,.cname:focus-visible{color:var(--accent);border-bottom-style:solid}
+  .cname::after{content:" ›";color:var(--red);font-weight:700}
+  .modal{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center}
+  .modal[hidden]{display:none}
+  .scrim{position:absolute;inset:0;background:rgba(6,13,34,.55)}
+  .sheet{position:relative;background:var(--paper);color:var(--ink);width:min(640px,100%);max-height:88vh;overflow:auto;border-radius:16px 16px 0 0;padding:0 0 22px;box-shadow:0 -10px 40px rgba(0,0,0,.25)}
+  @media (min-width:700px){.modal{align-items:center}.sheet{border-radius:16px}}
+  .m-head{background:linear-gradient(135deg,var(--navy),#1b3a8c);color:#fff;padding:22px 24px 18px;border-top:6px solid var(--red)}
+  .m-head .m-race{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#ffb3ba;font-weight:600}
+  .m-head h2{color:#fff!important;margin:6px 0 6px;font-size:26px}
+  .m-head h2::before{content:none}
+  .m-head .pty{color:#fff;border-color:rgba(255,255,255,.4);margin-right:6px}
+  .x{position:absolute;top:10px;right:12px;z-index:2;border:0;background:rgba(255,255,255,.15);color:#fff;width:34px;height:34px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}
+  .m-sec{padding:16px 24px 0}
+  .m-sec h4{margin:0 0 8px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+  .m-sec ul{margin:0;padding-left:18px}.m-sec li{margin:4px 0}
+  .issue{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+  .issue b{display:block;font-size:13px;color:var(--accent);margin-bottom:2px}
+  .m-note{font-size:13px;color:var(--muted);background:var(--accent-soft);border-radius:8px;padding:10px 12px}
+  .m-src a{display:block;font-size:13px;color:var(--accent);padding:3px 0}
+  .m-fine{padding:14px 24px 0;font-size:12px;color:var(--muted)}
+  footer{max-width:980px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:var(--muted)}
+  @media (max-width:520px){.yn{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="flagband"></div>
+<div class="hero"><header>
+  <div class="eyebrow">★ General Election · Tuesday, November 3, 2026</div>
+  <h1>What's on the ballot in <em>Pinellas County</em></h1>
+  <p class="lede">Every candidate and every ballot question for Pinellas voters, split into local, state, federal, and measures. Candidates are listed in official ballot order. <b>Tap any name</b> to see their background and where they stand. No endorsements.</p>
+  <div class="facts">
+    <span class="fact"><b>Polls:</b> 7 am – 7 pm</span>
+    <span class="fact"><b>Your exact ballot</b> depends on your address</span>
+    <span class="fact"><b>Sample ballot:</b> votepinellas.gov · (727) 464‑VOTE</span>
+  </div>
+</header></div>
+
+<div class="toolkit"><details open>
+  <summary>Help me decide <span>· research tools and a 15-minute plan</span></summary>
+  <ol class="steps">
+    <li><b>Pick your top 3 issues</b>, such as property insurance, housing costs, taxes, schools, flooding, or the economy.</li>
+    <li><b>Look up your exact ballot</b> by address so you only research races you'll actually see.</li>
+    <li><b>Compare candidates' own answers</b> on Vote411 or the public-media guide below. Every candidate gets the same questions.</li>
+    <li><b>Read each race's "Where they stand" links</b>. They were picked to cover the candidates on both sides.</li>
+    <li><b>Check claims you hear in ads</b> with a fact-checker. For amendments, look at what <i>Yes</i> and <i>No</i> each mean and who's funding each side.</li>
+    <li><b>It's OK to skip races</b>. Leaving a race blank doesn't spoil the rest of your ballot.</li>
+  </ol>
+  <div class="tk-grid">
+    <a href="https://www.vote411.org" target="_blank" rel="noopener"><b>Vote411</b><small>League of Women Voters (nonpartisan). Enter your address to see your ballot with candidates' answers in their own words.</small></a>
+    <a href="https://www.wusf.org/2026-voter-guide" target="_blank" rel="noopener"><b>Florida Public Media Voter Guide</b><small>WUSF and partners. Candidates answer the same questions on insurance, property taxes, data centers and affordability.</small></a>
+    <a href="https://ballotpedia.org/Sample_Ballot_Lookup" target="_blank" rel="noopener"><b>Ballotpedia</b><small>Nonpartisan encyclopedia: candidate backgrounds, past results, and survey responses.</small></a>
+    <a href="https://www.tampabay28.com/news/election-2026" target="_blank" rel="noopener"><b>Tampa Bay 28 questionnaires</b><small>Local candidates answer three identical questions.</small></a>
+    <a href="https://www.politifact.com" target="_blank" rel="noopener"><b>PolitiFact</b><small>Fact-checks of claims from candidates and campaign ads.</small></a>
+    <a href="https://www.votepinellas.gov" target="_blank" rel="noopener"><b>Pinellas Supervisor of Elections</b><small>Official sample ballot, polling place lookup, and full amendment text. (727) 464‑VOTE</small></a>
+  </div>
+  <p class="callout">Heads up: the governor's and U.S. Senate candidates never debated each other this year, so for those races, forums and interviews are the best way to compare them.</p>
+</details></div>
+
+<nav><div class="tabs" role="tablist">
+  <button class="tab" role="tab" data-tab="local">Pinellas County &amp; Cities</button>
+  <button class="tab" role="tab" data-tab="state">State of Florida</button>
+  <button class="tab" role="tab" data-tab="federal">Federal (U.S.)</button>
+  <button class="tab" role="tab" data-tab="measures">Amendments &amp; Referendums</button>
+</div></nav>
+
+<main>
+  <section class="panel" id="p-local"></section>
+  <section class="panel" id="p-state"></section>
+  <section class="panel" id="p-federal"></section>
+  <section class="panel" id="p-measures"></section>
+</main>
+
+<div class="modal" id="modal" hidden><div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-name">
+    <button class="x" data-close aria-label="Close">×</button>
+    <div id="m-body"></div>
+  </div></div>
+<footer>Compiled Nov 2, 2026 from the Pinellas County Supervisor of Elections' general-election contest list and local news coverage. Party codes: REP Republican · DEM Democrat · LPF Libertarian · NPA No Party Affiliation · WRI qualified write‑in (name not printed; voters write it in). Nonpartisan races show no party.</footer>
+
+<script>
+// Candidate profiles: background + positions the candidates themselves have stated, as reported by news coverage.
+// Paraphrased. No ratings or endorsements by this guide.
+const S = (t,u) => [t,u];
+const PROFILES = {
+// ---------- GOVERNOR ----------
+"Byron Donalds / Bryan Avila": {
+  bg:["U.S. representative from Naples, now in his third term","Running mate: state Sen. Bryan Avila","Would be Florida's first Black governor"],
+  stances:[
+    ["Property taxes","Supports Amendment 3 but calls it a first step. Has floated a multi-tier property-tax system that treats counties differently, without details yet."],
+    ["Home insurance","Says regulatory changes could cut premiums 20–25%. His ideas include insurer report cards, more home-hardening grants, and shrinking or dropping the Hurricane Catastrophe Fund's cash-buildup charge. Opposes Jolly's state wind-fund plan, saying it shifts costs onto Floridians."],
+    ["Housing","Wants faster permitting and planning so new homes cost less to build."],
+    ["Data centers & AI","Opposes bans and moratoriums. Supports data centers with safeguards: closed-loop water cooling, protections for residential customers, and keeping them away from homes. Backs a state 'AI bill of rights' to protect kids."],
+    ["School vaccines","Wants more parental discretion and spaced-out schedules, but hasn't backed dropping core requirements like polio and MMR."],
+    ["Immigration","Supports President Trump's immigration crackdown."]],
+  src:[S("WPTV: Donalds on taxes, insurance, vaccines, data centers","https://www.wptv.com/news/state/donalds-promises-insurance-cuts-defends-data-centers-as-race-pivots-to-november"),
+       S("FOX 13: Governor candidates clash on insurance and AI","https://www.fox13news.com/news/florida-governor-candidates-clash-over-home-insurance-ai-data-centers"),
+       S("News 6: Governor's race voter guide","https://www.clickorlando.com/voters-guide/2026/10/16/2026-voters-guide-florida-governors-race/")]},
+"David Jolly / Gwen Graham": {
+  bg:["Former Republican U.S. representative from Pinellas, now running as a Democrat","Running mate: former U.S. Rep. Gwen Graham","Formerly a cable-news political commentator"],
+  stances:[
+    ["Home insurance","Wants a state catastrophe fund that would take hurricane and wind coverage off the private market, paid for by taxes on insurer profits and tourist dollars. Says it could cut homeowners' premiums 60–70%."],
+    ["Housing, health care, education","Calls these his top priorities, along with overhauling how the state makes appointments. Says an existing fund could pay for workforce housing."],
+    ["Data centers","Opposes building them in Florida, saying the state doesn't need them."],
+    ["Immigration","Would not renew DeSantis' 2023 immigration state of emergency."],
+    ["Public health","Would replace Surgeon General Joseph Ladapo with someone who follows evidence-based science."],
+    ["Other priorities","His campaign also emphasizes reducing gun violence and restoring services for veterans."]],
+  src:[S("WUSF: Jolly and Donalds clash on insurance","https://www.wusf.org/politics-issues/2026-09-17/jolly-and-donalds-clash-on-property-insurance-proposals"),
+       S("FOX 13: Insurance and data centers","https://www.fox13news.com/news/florida-governor-candidates-clash-over-home-insurance-ai-data-centers"),
+       S("Axios: Governor candidates at an economic forum","https://www.axios.com/local/miami/2026/09/23/governor-candidates-debate-the-issues-donalds-jolly-florida")]},
+// ---------- CABINET ----------
+"James Uthmeier": {
+  bg:["Appointed attorney general in 2025; before that, Gov. DeSantis' chief of staff","Former counsel to Trump's 2016 campaign and to Commerce Secretary Wilbur Ross","Endorsed by President Trump"],
+  stances:[
+    ["Child safety","Calls pursuing child predators his top priority and largest accomplishment. Has sued online platforms, including Discord, over protection of minors, and is suing OpenAI."],
+    ["China","Created a unit that investigates companies with ties to China, citing national security and data protection."],
+    ["Crime","Cites fentanyl enforcement, prosecutions, and strong support for law enforcement."],
+    ["Hope Florida","Says he was never involved in the settlement negotiations behind the Hope Florida donation, and calls the controversy politically motivated."]],
+  src:[S("WLRN: What to know about the AG race","https://www.wlrn.org/government-politics/2026-10-23/what-to-know-about-florida-attorney-general-race"),
+       S("WFLA: Florida Cabinet races","https://www.wfla.com/news/florida/florida-voters-weigh-key-cabinet-races-this-november/amp/")]},
+"Jose Javier Rodriguez": {
+  bg:["Former state senator from Miami-Dade (2012–2020)","Assistant secretary of labor under President Biden","Cuban American attorney"],
+  stances:[
+    ["Utility & consumer costs","Wants to rein in monopoly utilities over rates and hidden fees, and to go after rising insurance costs, corporate-landlord price gouging, and wage theft. Wants taxpayers protected from data-center costs."],
+    ["Crime","Would target criminal organizations, give law enforcement more resources, fight elder abuse, and hold Big Tech accountable for harm to kids."],
+    ["Corruption","Wants to recover the $10M tied to Hope Florida and to review Alligator Alcatraz contracts and school voucher spending. Opposes selling or swapping conservation land."]],
+  src:[S("WLRN: What to know about the AG race","https://www.wlrn.org/government-politics/2026-10-23/what-to-know-about-florida-attorney-general-race")]},
+"Blaise Ingoglia": {
+  bg:["Appointed chief financial officer in 2025","Served more than a decade in the Florida Legislature","Former chairman of the Republican Party of Florida"],
+  stances:[
+    ["Government spending","Makes transparency the centerpiece of his campaign. Promises to use the CFO's audit power to find and call out wasteful local spending."],
+    ["Property taxes","Long backed DeSantis' push to cut property taxes, which became Amendment 3."]],
+  src:[S("WFLA: Florida Cabinet races","https://www.wfla.com/news/florida/florida-voters-weigh-key-cabinet-races-this-november/amp/"),
+       S("CBS Miami: Ingoglia appointed CFO","https://www.cbsnews.com/amp/miami/news/blaise-ingoglia-desantis-florida-chief-financial-officer")]},
+"Annette Taddeo": {
+  bg:["Former state senator from Miami-Dade","2026 Democratic nominee for CFO"],
+  stances:[
+    ["Independence","Argues the Cabinet needs to be a check on the governor and special interests. Pitches herself as a watchdog rather than an ally of the administration."],
+    ["Costs","Says politically connected insiders have profited while Florida families paid the price."]],
+  src:[S("WFLA: Florida Cabinet races","https://www.wfla.com/news/florida/florida-voters-weigh-key-cabinet-races-this-november/amp/"),
+       S("Florida Phoenix: Cabinet races set","https://floridaphoenix.com/2026/08/18/the-florida-cabinet-races-are-set-for-november/")]},
+"Wilton Simpson": {
+  bg:["Agriculture commissioner since 2023; seeking a second term","Former Florida Senate president"],
+  stances:[["Record he runs on","Points to state bans on lab-grown ('fake') meat, on foreign adversaries buying farmland, and on local governments fluoridating water."]],
+  src:[S("WFLA: Florida Cabinet races","https://www.wfla.com/news/florida/florida-voters-weigh-key-cabinet-races-this-november/amp/")]},
+"Joey Mendoza Atkins": {
+  bg:["Miami trial attorney and former sports agent"],
+  stances:[],
+  note:"News coverage of this race hasn't described his policy positions.",
+  src:[S("Florida Phoenix: Cabinet races set","https://floridaphoenix.com/2026/08/18/the-florida-cabinet-races-are-set-for-november/")]},
+// ---------- U.S. SENATE ----------
+"Ashley Moody": {
+  bg:["Appointed to the U.S. Senate in January 2025 to fill Marco Rubio's seat","Florida attorney general 2019–2025; former judge and prosecutor","Fifth-generation Floridian from Plant City; endorsed by President Trump"],
+  stances:[
+    ["Immigration & border","Running on an 'America First' platform. Supports President Trump's immigration enforcement agenda."],
+    ["Crime","Emphasizes law enforcement and public safety. Supports tougher penalties for crimes against police (the Thin Blue Line Act)."],
+    ["Economy","Talks about the cost of living, government waste, and cutting taxes and regulations."]],
+  src:[S("WGCU: Immigration, crime and economy shape Moody's campaign","https://www.wgcu.org/government-politics/2026-09-07/immigration-crime-and-economy-shape-ashley-moodys-senate-campaign"),
+       S("Campaign site","https://ashleymoody.com/")]},
+"Angie Nixon": {
+  bg:["State representative from Jacksonville since 2020","Won an upset in the August Democratic primary","Member of the Democratic Socialists of America, though she says she doesn't call herself a socialist"],
+  stances:[
+    ["Health care","Supports Medicare for All, starting by restoring expired ACA subsidies. Argues it would lower costs by reducing emergency-room use."],
+    ["Cost of living","Wants federal penalties on companies that inflate grocery and fuel prices, plus universal free childcare and a higher minimum wage."],
+    ["Taxes","Wants billionaires and large corporations to pay more."],
+    ["Retirement","Opposes any cuts to Social Security or Medicare."],
+    ["Data centers","Supports a moratorium."],
+    ["Immigration","Has said she doesn't think the U.S. needs ICE."]],
+  src:[S("FOX 13: Nixon one-on-one on housing, health care, foreign policy","https://www.fox13news.com/news/one-on-one-senate-candidate-angie-nixon-outlines-positions-housing-healthcare-foreign-policy"),
+       S("Orlando Weekly: Nixon's platform","https://www.orlandoweekly.com/news/elections/frost-eskamani-endorse-progressive-angie-nixon-for-u-s-senate/"),
+       S("WDBO: Nixon interview","https://www.wdbo.com/news/local/everybody-is-just-tired-rep-angie-nixon-orlandos-morning-news-with-scott-anez/YZ3JEFSBQRHC3LJA4OPDMGBMS4/")]},
+// ---------- U.S. HOUSE ----------
+"Anna Paulina Luna": {
+  bg:["U.S. representative since 2023; Air Force veteran","Won her last race by about 10 points"],
+  stances:[
+    ["Taxes & spending","Calls the 'Big Beautiful Bill' the vote she's proudest of, citing its tax cuts."],
+    ["Trade & foreign policy","Strongly backs President Trump's tariffs and his actions on Iran."],
+    ["Congressional ethics","Pushes to ban stock trading by members of Congress and to punish members who commit sexual harassment."],
+    ["District priorities","Supporters point to her work on beach renourishment and veterans' issues."]],
+  src:[S("FOX 13: Gray challenges Luna","https://www.fox13news.com/news/florida-congressional-race-retired-army-leela-gray-challenges-anna-paulina-luna")]},
+"Leela Gray": {
+  bg:["Retired Army brigadier general with 30 years of service; former Army communications officer","First run for office; Pinellas resident"],
+  stances:[
+    ["Cost of living","Running mainly on affordability. Wants to take on the corporate and insurance 'monopolies' she blames for rising premiums, and supports a middle-class tax cut."],
+    ["Health care & safety net","Criticizes the 'Big Beautiful Bill' over its cuts to Medicaid and SNAP."],
+    ["Trade & foreign policy","Says Trump's tariffs and U.S. military action in Iran, both backed by Luna, have raised prices and gas costs."],
+    ["Ethics","Campaigns against what she calls a culture of corruption in Washington."]],
+  src:[S("FOX 13: Gray challenges Luna","https://www.fox13news.com/news/florida-congressional-race-retired-army-leela-gray-challenges-anna-paulina-luna"),
+       S("WUSF: Gray wins Democratic nomination","https://www.wusf.org/politics-issues/2026-08-18/pinellas-primary-results-2026-leela-gray-wins-democratic-nomination-13th-congressional-district")]},
+"Sydney Gruters": {
+  bg:["Former aide to Rep. Vern Buchanan and district director for Rep. Greg Steube","Former executive director of the New College Foundation","First run for office; endorsed by President Trump"],
+  stances:[
+    ["Cost of living","Supports cutting taxes and fighting rising costs for families."],
+    ["Immigration","Would work with Trump and ICE to keep out violent criminals who enter illegally."],
+    ["Housing & growth","Wants to curb overdevelopment and keep homeownership affordable."],
+    ["Seniors & veterans","Would protect Social Security and Medicare and strengthen veterans' benefits."],
+    ["Elections","Says she'll stand with Trump on election security."]],
+  src:[S("WGCU: Three very different candidates in District 16","https://www.wgcu.org/elections/2026-10-16/three-very-different-candidates-vying-for-congress-in-florida-district-16"),
+       S("Tampa Bay Times: 5 takeaways from the District 16 forum","https://www.tampabay.com/news/florida-politics/elections/2026/09/26/florida-congress-district-16-gruters-kirschner-data-centers-st-pete/")]},
+"Kelly Kirschner": {
+  bg:["Former Sarasota mayor and city commissioner","Former Eckerd College vice president; Peace Corps volunteer in Guatemala","Calls himself a moderate Democrat and fiscal conservative"],
+  stances:[
+    ["Development","Points to blocking a 10-story condo project in a single-family neighborhood and helping build Payne Park."],
+    ["Corporate accountability","Says he'll take on predatory developers and corporate monopolies, arguing the system is rigged against ordinary families."],
+    ["Education","Highlights expanding college access for first-generation students through the nonprofit UnidosNow."]],
+  src:[S("WGCU: Three very different candidates in District 16","https://www.wgcu.org/elections/2026-10-16/three-very-different-candidates-vying-for-congress-in-florida-district-16"),
+       S("Tampa Bay Times: 5 takeaways from the District 16 forum","https://www.tampabay.com/news/florida-politics/elections/2026/09/26/florida-congress-district-16-gruters-kirschner-data-centers-st-pete/")]},
+"Mark Davis": {
+  bg:["U.S. Air Force veteran and small business owner","Running with no party affiliation"],
+  stances:[
+    ["Cost of living","Says prices keep rising while wages stay flat."],
+    ["Government","Wants 'common sense, honesty, and accountability'. Criticizes politicians focused on scoring points."],
+    ["Immigration & democracy","His campaign materials say 'ICE OUT' and use the 'No Kings' logo. Coverage hasn't described specific policies."]],
+  src:[S("WGCU: Three very different candidates in District 16","https://www.wgcu.org/elections/2026-10-16/three-very-different-candidates-vying-for-congress-in-florida-district-16")]},
+// ---------- COUNTY ----------
+"Kathleen Peters": {
+  bg:["County commissioner since 2018","State representative 2012–2018","Lived in Pinellas since 1985; former small business owner"],
+  stances:[
+    ["Affordability","Calls it the county's top challenge. Notes the county has cut its property-tax rate in four of the last five years."],
+    ["Behavioral health","Has worked to expand treatment access through a coordinated 'no wrong door' approach."],
+    ["Flooding & resilience","Cites investments in beach renourishment, stormwater, and flood mitigation that she says lowered flood insurance costs for some residents."]],
+  src:[S("Tampa Bay 28 questionnaire","https://www.tampabay28.com/news/local-news/meet-the-candidates-questionnaire-for-pinellas-county-board-of-county-commissioners-d-6")]},
+"David Glenn Jr.": {
+  bg:["Licensed architect and interior designer: schools, transit facilities, senior and multifamily housing","FAMU graduate; first run for office"],
+  stances:[
+    ["Revenue","Wants to raise revenue without raising taxes, by allowing taller buildings in chosen areas to grow the tax base and by promoting tourism."],
+    ["Spending priorities","Would put new revenue into transit, parks, libraries, permitting, animal services, infrastructure, and housing for teachers, first responders, seniors and veterans."],
+    ["Engagement","Plans 'Workdays', working different jobs around the county to meet residents."]],
+  src:[S("Tampa Bay 28 questionnaire","https://www.tampabay28.com/news/local-news/meet-the-candidates-questionnaire-for-pinellas-county-board-of-county-commissioners-d-6")]},
+"Brian Scott": {
+  bg:["County commissioner since 2022; served as board chair in 2025","President of Escot Bus Lines; former Pinellas transit (PSTA) board director","Has testified before Congress on transportation"],
+  stances:[],
+  note:"We couldn't find 2026 coverage of his specific positions. When he first ran in 2022, he campaigned on lower taxes and term limits.",
+  src:[S("Pinellas County: Commissioner Brian Scott","https://pinellas.gov/pinellas-county-board-of-county-commissioners/commissioner-brian-scott/")]},
+"Tim Hughes": {
+  bg:["Conservation chair of the Suncoast Sierra Club","First-time candidate"],
+  stances:[],
+  note:"We couldn't find news coverage of his specific positions.",
+  src:[]},
+"Curtis Campogni": {
+  bg:["Has spent about 15 years working with at-risk youth, as a group-home worker and case manager","He and his wife adopted two children through foster care; his mother is a public-school teacher","No party affiliation; endorsed by the Pinellas teachers' union"],
+  stances:[["Approach","Says he wants to 'disrupt the status quo' and is focused on helping young people succeed."]],
+  src:[S("WUSF: Tampa Bay school board runoffs","https://www.wusf.org/politics-issues/2026-10-08/10-tampa-bay-area-school-board-races-go-to-run-offs-midterms")]},
+"Dawn Peters": {
+  bg:["School board member since 2022; current vice chair","Former personal trainer and parental-rights advocate","Registered Republican; endorsed by the county clerk, tax collector, and property appraiser"],
+  stances:[["Priorities","Student academic growth, stability, and higher pay and support for teachers and staff through the budget. Says she's committed to transparency and accountability."]],
+  src:[S("WUSF: Tampa Bay school board runoffs","https://www.wusf.org/politics-issues/2026-10-08/10-tampa-bay-area-school-board-races-go-to-run-offs-midterms")]},
+// ---------- ST. PETE ----------
+"Charlie Crist": {
+  bg:["Former Florida governor, U.S. representative, and attorney general","Finished first in the August primary with about 35%"],
+  stances:[
+    ["Property taxes","Proposes cutting the city tax rate by 0.4 mills, about $15M a year. Opposes Amendment 3."],
+    ["$600M water/sewer bond","Opposes it, citing residents' rising costs."],
+    ["Flock cameras","Would pause the license-plate cameras while reviewing privacy protections."],
+    ["Trop site","Wants a panel to review redevelopment plans, including parks, and would keep trying to keep the Rays until their Tampa stadium is underway."],
+    ["Spending","Calls City Hall bloated, pointing to 262 positions added under Welch."],
+    ["Pride murals","Says the city should have challenged the state in court over removing them."]],
+  src:[S("FOX 13: Mayoral debate takeaways","https://www.fox13news.com/news/st-petersburg-mayoral-debate-5-key-takeaways-taxes-bonds-pride-murals"),
+       S("FOX 13: Where Crist stands","https://www.fox13news.com/news/election-2026-where-charlie-crist-stands-property-taxes-bonds-flock-cameras-affordability")]},
+"Kenneth T. Welch": {
+  bg:["Mayor since 2022, the city's first Black mayor","Pinellas County commissioner for 20 years before that"],
+  stances:[
+    ["Property taxes","Opposes Amendment 3. Says Crist misreads the budget, since many city jobs are paid for by utility revenue, not property taxes."],
+    ["$600M water/sewer bond","Supports it. Calls Helene and Milton proof of decades of underinvestment and says the bond would speed up the work."],
+    ["Flock cameras","Defends them as a tool for tracking violent-crime suspects and is open to reviewing safeguards."],
+    ["Trop site","Defends choosing Blake Investment Partners for the roughly 58 acres, with a focus on housing and jobs."],
+    ["Pride murals","Says the city worked with state officials and city attorneys before they were removed."]],
+  src:[S("FOX 13: Mayoral debate takeaways","https://www.fox13news.com/news/st-petersburg-mayoral-debate-5-key-takeaways-taxes-bonds-pride-murals"),
+       S("Axios: Welch and Crist sharpen contrasts","https://www.axios.com/local/tampa-bay/2026/09/28/st-petersburg-mayor-election-forum-runoff-2026")]},
+"Gabriel Hament": {
+  bg:["Assistant public defender in Hillsborough County","Former investment adviser who worked on municipal bond research","Served on the Sarasota schools' financial advisory committee"],
+  stances:[
+    ["Storm readiness","Calls it the top issue. Strongly supports the $600M bond and wants part of it to fund grants for hardening homes."],
+    ["District plans","Proposes branding District 2 the 'Gateway District', with a park, community center, public art, and traffic calming on MLK."],
+    ["Other focuses","Cost of living, economic opportunity, and keeping St. Pete inclusive."]],
+  src:[S("Tampa Bay 28 questionnaire","https://www.tampabay28.com/news/election-2026/meet-the-candidates-questionnaire-for-st-petersburg-city-council-district-2"),
+       S("Tampa Bay Times: District 2 forum","https://www.tampabay.com/news/2026/06/24/st-petersburg-city-council-district-two-hurricane-recovery-data-center/")]},
+"Courtney Bermudez": {
+  bg:["Property manager"],
+  stances:[["$600M bond","Has said she'd like to explore other options before backing the bond."],
+           ["Storm recovery","At a June forum she discussed storm preparedness, permitting, and drainage upgrades."]],
+  note:"She didn't answer the Tampa Bay 28 questionnaire, so there's less detail on her positions.",
+  src:[S("Tampa Bay Times: District 2 forum","https://www.tampabay.com/news/2026/06/24/st-petersburg-city-council-district-two-hurricane-recovery-data-center/")]},
+"Linsey Grove": {
+  bg:["Public-health practitioner for more than 20 years; nonprofit consultant","Has lived in District 6 for over 13 years"],
+  stances:[["Approach","Says she'll represent every community in the district and bring her public-health and organizing experience to the city's problems."]],
+  note:"News coverage has described her background more than her positions on specific issues.",
+  src:[S("Tampa Bay Times: Grove, Mallory lead District 6 race","https://www.tampabay.com/news/florida-politics/elections/2026/08/18/st-petersburg-city-council-district-6-downtown-grove-mallory/")]},
+"Trevor Mallory": {
+  bg:["Leads a homebuyer-assistance nonprofit","Former president of the Democratic Black Caucus of Florida"],
+  stances:[["Affordability","Has made affordability, especially housing costs, the center of his campaign."],
+           ["Approach","Says District 6 needs someone who can work with every part of the district."]],
+  src:[S("Tampa Bay Times: Mallory enters race","https://tampabay.com/news/2026/02/17/st-petersburg-city-council-downtown-district-6-election/")]},
+};
+
+const C = (name, party, desc, inc) => ({name, party, desc, inc});
+
+const DATA = {
+local: {
+  note: "Not every Pinellas voter sees every race below. District seats, city races and fire-district seats appear only for voters who live there. Check your sample ballot at votepinellas.gov.",
+  sections: [
+    { title: "Pinellas County Commission", sub: "Partisan · 4‑year terms",
+      races: [
+        { name:"District 2 (At Large)", who:"All Pinellas voters", cands:[
+          C("Brian Scott","REP","Business owner; current District 2 commissioner",true),
+          C("Tim Hughes","DEM","")]},
+        { name:"District 6 (Single Member)", who:"Mid‑Pinellas & southern beaches (Seminole, Pinellas Park, Redington Shores south)", cands:[
+          C("Kathleen Peters","REP","Former state legislator; on the commission since 2018",true),
+          C("David Glenn Jr.","DEM","Interior designer; first run for office")]},
+      ]},
+    { title: "Pinellas County School Board", sub: "Nonpartisan runoff (no one won a majority in August)",
+      races: [
+        { name:"District 3 (At Large)", who:"All Pinellas voters", cands:[
+          C("Curtis Campogni","","Consultant and speaker; first-time candidate"),
+          C("Dawn Peters","","Current District 3 board member",true)]},
+      ]},
+    { title: "City of St. Petersburg", sub: "Nonpartisan · St. Pete voters only",
+      races: [
+        { name:"Mayor (runoff)", who:"Citywide", cands:[
+          C("Charlie Crist","","Former Florida governor and U.S. representative; finished first in August with about 35%"),
+          C("Kenneth T. Welch","","Current mayor since 2022; finished second in August with about 21%",true)]},
+        { name:"City Council, District 2", who:"Citywide vote", cands:[
+          C("Courtney Bermudez","","Property manager"),
+          C("Gabriel Hament","","Assistant public defender in Hillsborough County")]},
+        { name:"City Council, District 6 (runoff)", who:"Citywide vote", cands:[
+          C("Linsey Grove","","Nonprofit consultant"),
+          C("Trevor Mallory","","Leads a homebuyer-assistance nonprofit")]},
+      ]},
+    { title: "Other cities", sub: "Nonpartisan · residents of each city only",
+      races: [
+        { name:"Clearwater City Council, Seat 5 (runoff)", who:"Clearwater", cands:[C("Mark Bunker","",""),C("Sam Wilson","","")]},
+        { name:"Largo City Commission, Seat 2", who:"Largo", cands:[C("Curtis A. Holmes","",""),C("Matthew Faustini","","")]},
+        { name:"Dunedin City Commission, Seat 4", who:"Dunedin", cands:[C("Nan Bennett","",""),C("Mark A. Ossian","","")]},
+        { name:"Seminole City Council", who:"Seminole", cands:[C("Ray Beliveau","",""),C("Mike Lurie","",""),C("Kadi Hendricks Tubbs","","")]},
+        { name:"Belleair Beach City Council", who:"Belleair Beach", cands:[C("Kent A. Goff","",""),C("Annette Hopper","",""),C("Lloyd A. Roberts","",""),C("Jody Shirley","","")]},
+      ]},
+    { title: "Fire & special districts", sub: "Nonpartisan · residents of each district only",
+      races: [
+        { name:"East Lake Tarpon Fire Control District, Seat 2", who:"East Lake area", cands:[C("Jim Downes","",""),C("Bob Fornwalt","","")]},
+        { name:"Palm Harbor Fire Control & Rescue District, Seat 2", who:"Palm Harbor", cands:[C("Benjamin Nichols","",""),C("Julie Peluso","","")]},
+        { name:"Pinellas Suncoast Fire & Rescue District, Seat 2", who:"District residents", cands:[C("Elizabeth “Betsey” McKenna","",""),C("Daniel Mynsberge","","")]},
+        { name:"Eastlake Oaks Community Development District, Seat 2", who:"Eastlake Oaks", cands:[C("Joshua Main","",""),C("J.R. “Nick” Yagnik","","")]},
+      ]},
+  ],
+  decided: ["County Commission District 4: Dave Eggers (REP) won in the August universal primary.",
+            "School Board District 2: Lisa Cane won in August.",
+            "School Board District 6: Nancy Bostock won in August by 7 votes after a recount.",
+            "Circuit and county judge contests were settled in August, so only judicial retention votes remain. Those are on the State tab."],
+  sources: [
+    ["Pinellas Supervisor of Elections: Nov 3 General Election page","https://www.votepinellas.gov/382/November-3-2026-General-Election-Informa"],
+    ["Patch: 2026 Pinellas County Election Guide","https://patch.com/florida/stpete/pinellas-county-elections-2026-guide-candidates-how-vote"],
+    ["Axios Tampa Bay: Pinellas & St. Pete voting guide","https://www.axios.com/local/tampa-bay/2026/10/09/pinellas-st-pete-voter-guide-2026-midterms"],
+    ["Axios: Who advanced in the August primary","https://www.axios.com/local/tampa-bay/2026/08/19/who-advanced-in-key-tampa-bay-races"],
+    ["WUSF: Bostock wins District 6 after recount","https://www.wusf.org/education/2026-08-21/nancy-bostock-clinches-pinellas-school-board-seat-after-recount"],
+    ["St. Pete Catalyst: Crist and Welch head to runoff","https://stpetecatalyst.com/crist-wins-big-over-welch-but-the-mayors-race-will-go-to-a-runoff/"],
+  ]
+},
+state: {
+  note: "Statewide races are on every Florida ballot. Legislative districts depend on your address.",
+  sections: [
+    { title: "Governor & Lieutenant Governor", sub: "Open seat. Gov. Ron DeSantis is term-limited. Running mates are shown after the slash.",
+      races: [
+        { name:"Governor / Lt. Governor", who:"All Florida voters", cands:[
+          C("Byron Donalds / Bryan Avila","REP","Donalds is a U.S. representative from Naples"),
+          C("David Jolly / Gwen Graham","DEM","Jolly is a former U.S. representative from Pinellas, formerly Republican"),
+          C("Scott Eckhard Jewett / Nicole Skelly","LPF",""),
+          C("Charles Burkett / Ruben A. Coto","NPA",""),
+          C("Frank J. Russo / Rachel Rodriguez","NPA",""),
+          C("Moliere “Moe” Dimanche / Benjamin Rojas","NPA",""),
+          C("Dean Ocean Abrams / Joe Van Vactor","NPA",""),
+          C("Jeffrey Peter “Dr. Jeff” Datto / Juan Santana","NPA",""),
+          C("Kathy Anderson / Daniel Nokovich","WRI","Qualified write-in"),
+          C("Erik Morris / LeRoy Alaways","WRI","Qualified write-in")]},
+      ]},
+    { title: "Florida Cabinet", sub: "Statewide · 4‑year terms",
+      races: [
+        { name:"Attorney General", who:"All Florida voters", cands:[
+          C("James Uthmeier","REP","Appointed attorney general in 2025",true),
+          C("Jose Javier Rodriguez","DEM","Former state senator")]},
+        { name:"Chief Financial Officer", who:"All Florida voters", cands:[
+          C("Blaise Ingoglia","REP","Appointed CFO in 2025",true),
+          C("Annette Taddeo","DEM","Former state senator")]},
+        { name:"Commissioner of Agriculture", who:"All Florida voters", cands:[
+          C("Wilton Simpson","REP","",true),
+          C("Joey Mendoza Atkins","DEM",""),
+          C("Kyle “KC” Gibson","WRI","Qualified write-in")]},
+      ]},
+    { title: "Florida Senate", sub: "Depends on your address",
+      races: [
+        { name:"State Senate, District 18", who:"Much of central & coastal Pinellas", cands:[
+          C("Nick DiCeglie","REP","Senator since 2022",true),
+          C("Karla Kemp","DEM","")]},
+        { name:"State Senate, District 21", who:"Parts of Pinellas", cands:[
+          C("Chris Nocco","REP",""),
+          C("Jordan Hensley","DEM","")]},
+      ]},
+    { title: "Florida House", sub: "Depends on your address",
+      races: [
+        { name:"State House, District 57", who:"Parts of Pinellas", cands:[C("Adam C. Anderson","REP",""),C("Wendy Hoy","DEM","")]},
+        { name:"State House, District 58", who:"Parts of Pinellas", cands:[C("Kimberly “Kim” Berfield","REP","",true),C("Bryan Beckman","DEM","")]},
+        { name:"State House, District 59", who:"Parts of Pinellas", cands:[C("Berny Jacques","REP","",true),C("Susan Rochelle Leff","DEM","")]},
+        { name:"State House, District 60 (open)", who:"St. Pete from downtown north, plus part of Pinellas Park", cands:[
+          C("Melissa Rutland","REP","Real estate broker"),
+          C("Lindsay Polega-Quigley","DEM","Lawyer; endorsed by the retiring Rep. Lindsay Cross")]},
+        { name:"State House, District 61", who:"Parts of Pinellas", cands:[C("Linda Chaney","REP","",true),C("May Thach","DEM","")]},
+      ]},
+    { title: "Judicial retention", sub: "Vote YES to keep each judge for another term, NO to remove them. Nonpartisan.",
+      races: [
+        { name:"Florida Supreme Court", who:"All Florida voters", cands:[C("Justice Carlos G. Muniz","","Retain: Yes / No")]},
+        { name:"Second District Court of Appeal", who:"Voters in the 2nd District, including Pinellas", cands:[
+          C("Judge Drew Atkins","","Retain: Yes / No"),C("Judge Morris Silberman","","Retain: Yes / No"),
+          C("Judge Daniel H. Sleet","","Retain: Yes / No"),C("Judge Andrea Teves Smith","","Retain: Yes / No")]},
+      ]},
+  ],
+  decided: ["State Senate District 16 and State House District 62 were universal primaries (only one party ran), so they were settled in August and are not on the November ballot."],
+  sources: [
+    ["Pinellas Supervisor of Elections: Nov 3 General Election page","https://www.votepinellas.gov/382/November-3-2026-General-Election-Informa"],
+    ["The Green Papers: Florida 2026","https://www.thegreenpapers.com/G26/FL"],
+    ["WFSU: Donalds and Jolly will face off for governor","https://news.wfsu.org/state-news/2026-08-19/donalds-and-jolly-will-face-off-for-florida-governor"],
+    ["Axios: Pinellas legislative races","https://www.axios.com/local/tampa-bay/2026/10/09/pinellas-st-pete-voter-guide-2026-midterms"],
+    ["Pinellas SOE: August primary info (universal primaries)","https://www.votepinellas.gov/375/August-18-2026-Primary-Election-Informat"],
+  ]
+},
+federal: {
+  note: "Florida redrew its congressional map in May 2026. Most of Pinellas, including Clearwater and Largo, is now in District 13. St. Petersburg moved into District 16. Kathy Castor's District 14 no longer includes any of Pinellas.",
+  sections: [
+    { title: "U.S. Senate (special election)", sub: "For the rest of the term Marco Rubio left. The seat is up again in 2028.",
+      races: [
+        { name:"U.S. Senator", who:"All Florida voters", cands:[
+          C("Ashley Moody","REP","Appointed to the Senate in 2025",true),
+          C("Angie Nixon","DEM","State representative from Jacksonville"),
+          C("Neil J. Gillespie","NPA","")]},
+      ]},
+    { title: "U.S. House of Representatives", sub: "2‑year terms · depends on your address",
+      races: [
+        { name:"District 13", who:"Most of Pinellas (Clearwater, Largo, north county)", cands:[
+          C("Anna Paulina Luna","REP","In office since 2023",true),
+          C("Leela Gray","DEM","Retired Army brigadier general"),
+          C("Tony D'Arrigo","NPA","")]},
+        { name:"District 16 (open)", who:"St. Petersburg, plus Manatee, DeSoto, Hardee and parts of Sarasota & Polk", cands:[
+          C("Sydney Gruters","REP","Former aide to retiring Rep. Vern Buchanan; endorsed by Trump"),
+          C("Kelly Kirschner","DEM","Describes himself as a moderate Democrat and fiscal conservative"),
+          C("Mark Davis","NPA","")]},
+      ]},
+  ],
+  decided: [],
+  sources: [
+    ["Pinellas Supervisor of Elections: Nov 3 General Election page","https://www.votepinellas.gov/382/November-3-2026-General-Election-Informa"],
+    ["WUSF: New map shakes up Suncoast districts","https://www.wusf.org/politics-issues/2026-05-02/new-florida-congressional-map-shakes-up-districts-suncoast-frontrunners"],
+    ["WWSB: Three candidates for District 16","https://www.mysuncoast.com/2026/09/23/three-candidates-set-compete-floridas-district-16-seat/"],
+    ["WGCU: District 16 candidates","https://www.wgcu.org/elections/2026-10-16/three-very-different-candidates-vying-for-congress-in-florida-district-16"],
+    ["Bay News 9: How Tampa Bay districts shifted","https://baynews9.com/fl/tampa/political-connections/2026/08/03/political-connections-august-3-2026"],
+  ]
+},
+measures: {
+  note: "Statewide amendments need at least 60% YES to pass. City and town questions need a simple majority, and only residents of that city vote on them. No countywide Pinellas question is on this ballot.",
+  groups: [
+    { title:"Florida constitutional amendments", sub:"On every Florida ballot", items:[
+      { tag:"Amendment 1", title:"Budget Stabilization Fund",
+        what:"Raises the cap on the state's rainy-day reserve fund from 10% to 25% of general revenue. Also sets rules for putting money in and taking it out for urgent needs.",
+        yes:"Allow the state to save a larger reserve, under the new transfer rules.", no:"Keep the current 10% cap." },
+      { tag:"Amendment 2", title:"Tax exemption for farm equipment & property on agricultural land",
+        what:"Exempts movable property used for farming or agritourism on agricultural land from property taxes, starting in the 2027 tax year.",
+        yes:"Add the exemption.", no:"Keep taxing this property as now." },
+      { tag:"Amendment 3", title:"Bigger homestead exemption; lower cap on non-homestead assessment increases",
+        what:"Raises the homestead exemption from non-school property taxes to $150,000 in 2027 and $250,000 in 2028, then adjusts it for inflation. Cuts the yearly cap on assessment increases for non-homestead property from 10% to 5%, and limits how local governments can use property-tax money.",
+        yes:"Lower property taxes for homeowners and limit increases for other properties.", no:"Keep the current exemptions and caps.",
+        context:"Context: St. Petersburg estimates it would lose about $33M in property-tax revenue in FY2028 and $54M the year after. Public-safety groups have come out against it. Supporters point to the savings for primary homeowners." },
+    ]},
+    { title:"City of St. Petersburg", sub:"St. Pete voters only", items:[
+      { tag:"Referendum 1", title:"$600 million general obligation bond for water, sewer & stormwater",
+        what:"Lets the city issue up to $600M in bonds, repaid by a new property tax, to speed up stormwater, wastewater and drinking-water improvements.",
+        yes:"Approve the bonds and the property tax that repays them.", no:"Keep funding these projects at the current pace.",
+        context:"Context: The city says this would shorten a backlog it expects to take about 24 years. The St. Pete mayoral candidates take opposite sides: Welch supports it and Crist does not." },
+      { tag:"Charter Amendment 1", title:"Jamestown vacant lots",
+        what:"Removes nine city-owned vacant lots in the Jamestown area from the protected Park & Waterfront Map, so they could be sold for housing.",
+        yes:"Allow the lots to be considered for housing sales.", no:"Keep them on the protected map." },
+      { tag:"Referendum 2", title:"Harborage Marina lease",
+        what:"Approves amending the Harborage Marina lease to extend it to 30 years, with required improvements.",
+        yes:"Approve the 30-year lease extension.", no:"Reject the extension." },
+      { tag:"Charter Amendment 2", title:"Port of St. Petersburg leases",
+        what:"Raises the length of a port lease that needs voter approval from 10 years to 25 years.",
+        yes:"Allow port leases up to 25 years without a public vote.", no:"Keep the 10-year limit." },
+      { tag:"Charter Amendment 3", title:"Even-year elections cleanup",
+        what:"Technical and conforming changes to put in place the move to even-numbered-year city elections, which voters approved in 2022.",
+        yes:"Adopt the conforming changes.", no:"Leave the charter text as is." },
+    ]},
+    { title:"Other cities & towns", sub:"Residents of each city or town only", items:[
+      { tag:"Largo · Referendum", title:"Candidate petition timing",
+        what:"Petitions for mayor and city commission candidates would first become available on March 15 of each regular election year, or on a date the commission sets for special elections.",
+        yes:"Adopt the new start date.", no:"Keep the current timing." },
+      { tag:"Madeira Beach · Charter Amendment 1", title:"Move city elections to November",
+        what:"Moves regular city elections from March to November.", yes:"Hold city elections in November.", no:"Keep March elections." },
+      { tag:"Madeira Beach · Charter Amendment 2", title:"Move candidate qualifying to June",
+        what:"Moves the candidate qualifying period from December to June.", yes:"Qualify in June.", no:"Keep December qualifying." },
+      { tag:"Madeira Beach · Charter Amendment 3", title:"Temporary term extensions",
+        what:"Temporarily extends some commissioner and mayor terms to line up with the new November schedule.", yes:"Extend terms for the transition.", no:"Don't extend terms." },
+      { tag:"Redington Shores · Question 1", title:"Three-year commissioner terms",
+        what:"Changes commissioner terms from two years to three.", yes:"Three-year terms.", no:"Keep two-year terms." },
+      { tag:"Redington Shores · Question 2", title:"Mayor term after 2027",
+        what:"If Question 1 passes, the mayor elected in 2027 serves two years so terms stay staggered.", yes:"Set the two-year term.", no:"Don't set it." },
+      { tag:"Treasure Island · Referendum", title:"Supermajority for planned developments",
+        what:"Requires four commissioners, a supermajority, to approve planned developments or special area plans.", yes:"Require the supermajority.", no:"Keep the current vote threshold." },
+      { tag:"Belleair · Charter Amendment 1", title:"Planning & zoning board",
+        what:"Removes the requirement that the Town Commission appoint a planning and zoning board.", yes:"Make the board optional.", no:"Keep the requirement." },
+      { tag:"Belleair · Charter Amendment 2", title:"Charter Review Committee timing",
+        what:"Moves the month the Charter Review Committee is set up from June to May, starting in 2036.", yes:"Move it to May.", no:"Keep June." },
+    ]},
+  ],
+  sources: [
+    ["Pinellas Supervisor of Elections: Nov 3 General Election page","https://www.votepinellas.gov/382/November-3-2026-General-Election-Informa"],
+    ["NBC Miami: The Florida amendments on the Nov 2026 ballot","https://www.nbcmiami.com/elections/these-are-the-florida-amendments-on-the-november-2026-ballot/3877785/"],
+    ["Patch: 2026 Pinellas County Election Guide","https://patch.com/florida/stpete/pinellas-county-elections-2026-guide-candidates-how-vote"],
+    ["WUSF: St. Pete GO bond explained","https://www.wusf.org/environment/2026-10-01/st-petersburg-voters-asked-authorize-bonds-speed-up-protecting-utilities"],
+    ["FOX 13: St. Pete mayoral debate (bond, Amendment 3)","https://www.fox13news.com/news/st-petersburg-mayoral-debate-5-key-takeaways-taxes-bonds-pride-murals"],
+  ]
+}
+};
+
+// "Where they stand" links: chosen to cover all major candidates in a race, not one side.
+const L = (t,u,src) => ({t,u,src});
+const VOTE411 = L("Compare candidates' answers in their own words","https://www.vote411.org","Vote411 · League of Women Voters");
+const WUSF = L("Same questions for every candidate (property taxes, insurance, data centers)","https://www.wusf.org/2026-voter-guide","Florida Public Media Voter Guide");
+const RACE_LINKS = {
+  "Governor / Lt. Governor":[
+    L("Jolly and Donalds clash on property insurance proposals","https://www.wusf.org/politics-issues/2026-09-17/jolly-and-donalds-clash-on-property-insurance-proposals","WUSF / Florida Phoenix"),
+    L("Both candidates on taxes, housing & immigration at a public forum (held separately)","https://www.axios.com/local/miami/2026/09/23/governor-candidates-debate-the-issues-donalds-jolly-florida","Axios Miami"),
+    L("Home insurance and AI data centers: how their plans differ","https://www.fox13news.com/news/florida-governor-candidates-clash-over-home-insurance-ai-data-centers","FOX 13"),
+    L("Candidate survey answers for the governor's race","https://www.clickorlando.com/voters-guide/2026/10/16/2026-voters-guide-florida-governors-race/","News 6 / News Collaborative of Central Florida"),
+    WUSF],
+  "U.S. Senator":[
+    L("Moody and Nixon head into November: profiles of both","https://www.local10.com/news/politics/2026/08/21/ashley-moody-angie-nixon-prepare-for-november-us-senate-showdown/","WPLG Local 10"),
+    L("Immigration, crime and the economy in Moody's campaign","https://www.wgcu.org/government-politics/2026-09-07/immigration-crime-and-economy-shape-ashley-moodys-senate-campaign","WGCU"),
+    L("Nixon on her platform after winning the primary","https://www.local10.com/news/local/2026/08/19/i-dont-run-away-from-hard-questions-senate-candidate-angie-nixon-says-shes-ready-for-november/","WPLG Local 10"),
+    WUSF],
+  "District 13":[
+    L("Gray vs. Luna: the economy, Medicaid/SNAP, debate challenge","https://www.fox13news.com/news/florida-congressional-race-retired-army-leela-gray-challenges-anna-paulina-luna","FOX 13"),
+    VOTE411],
+  "District 16 (open)":[
+    L("5 takeaways from the District 16 candidate forum","https://www.tampabay.com/news/florida-politics/elections/2026/09/26/florida-congress-district-16-gruters-kirschner-data-centers-st-pete/","Tampa Bay Times"),
+    L("Three very different candidates for District 16","https://www.wgcu.org/elections/2026-10-16/three-very-different-candidates-vying-for-congress-in-florida-district-16","WGCU"),
+    L("Candidates spar in an online League of Women Voters forum","https://www.wusf.org/politics-issues/2026-09-24/candidates-to-replace-vern-buchanan-in-congress-spar-in-an-online-forum","WUSF"),
+    VOTE411],
+  "Mayor (runoff)":[
+    L("Mayoral debate: 5 takeaways on taxes, bonds, Flock cameras, Trop site","https://www.fox13news.com/news/st-petersburg-mayoral-debate-5-key-takeaways-taxes-bonds-pride-murals","FOX 13"),
+    L("Welch and Crist sharpen contrasts at a forum","https://www.axios.com/local/tampa-bay/2026/09/28/st-petersburg-mayor-election-forum-runoff-2026","Axios Tampa Bay"),
+    VOTE411],
+  "District 6 (Single Member)":[
+    L("Both candidates answer the same questions","https://www.tampabay28.com/news/local-news/meet-the-candidates-questionnaire-for-pinellas-county-board-of-county-commissioners-d-6","Tampa Bay 28"),
+    VOTE411],
+};
+const MEASURE_LINKS = {
+  "Amendment 1":[L("Official ballot text for all three amendments","https://www.nbcmiami.com/elections/these-are-the-florida-amendments-on-the-november-2026-ballot/3877785/","NBC Miami")],
+  "Amendment 2":[L("Official ballot text for all three amendments","https://www.nbcmiami.com/elections/these-are-the-florida-amendments-on-the-november-2026-ballot/3877785/","NBC Miami")],
+  "Amendment 3":[
+    L("What you're actually voting on, explained by a property appraiser","https://cbs12.com/news/local/florida-property-tax-amendment-what-are-you-actually-voting-on-florida-amendment-3-explained-homestead-save-our-homes-property-appraiser-explains","CBS12"),
+    L("The debate over the measure: supporters and opponents","https://baynews9.com/fl/tampa/political-connections/2026/10/13/political-connections--debate-over-property-tax-measure","Bay News 9"),
+    L("Who's funding each side, and opponents' warnings about service cuts","https://www.wptv.com/news/state/florida-realtors-puts-10-million-behind-amendment-3-as-opponents-warn-of-service-cuts","WPTV"),
+    L("Full ballot language and details","https://floridaphoenix.com/voter-guides/ballot-measures/2026-amendment-3/","Florida Phoenix voter guide")],
+  "Referendum 1":[
+    L("What the $600M bond would fund and why the city wants it","https://www.wusf.org/environment/2026-10-01/st-petersburg-voters-asked-authorize-bonds-speed-up-protecting-utilities","WUSF"),
+    L("Where both mayoral candidates stand on the bond","https://www.fox13news.com/news/st-petersburg-mayoral-debate-5-key-takeaways-taxes-bonds-pride-murals","FOX 13")],
+};
+const DEFAULT_RACE_LINKS = [VOTE411];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function linksHTML(list, label){
+  if(!list || !list.length) return '';
+  return `<div class="stand"><div class="stand-h">${label}</div>${list.map(l=>`<a href="${l.u}" target="_blank" rel="noopener">${esc(l.t)}<span>${esc(l.src)}</span></a>`).join('')}</div>`;
+}
+function raceHTML(r){
+  const isRetention = /Court/.test(r.name);
+  const links = RACE_LINKS[r.name] || (isRetention ? [L("Judicial retention basics and each judge's background","https://www.vote411.org","Vote411 · League of Women Voters")] : DEFAULT_RACE_LINKS);
+  return `<div class="race"><h3>${esc(r.name)}</h3><div class="who">${esc(r.who)}</div>${
+    r.cands.map(c=>`<div class="cand">${c.party?`<span class="pty">${c.party}</span>`:`<span class="pty">—</span>`}<div><button class="cname" data-name="${esc(c.name)}" data-race="${esc(r.name)}" data-party="${c.party||''}">${esc(c.name)}</button>${c.inc?'<span class="inc">Incumbent</span>':''}${c.desc?`<div class="cdesc">${esc(c.desc)}</div>`:''}</div></div>`).join('')
+  }${linksHTML(links, 'Where they stand')}</div>`;
+}
+function sourcesHTML(list){
+  return `<div class="sources"><b>Sources</b><br>${list.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join(' · ')}</div>`;
+}
+function renderCandidates(key){
+  const d = DATA[key];
+  let h = `<div class="note">${esc(d.note)}</div>`;
+  for(const s of d.sections){
+    h += `<h2>${esc(s.title)}</h2><p class="sub">${esc(s.sub)}</p><div class="grid">${s.races.map(raceHTML).join('')}</div>`;
+  }
+  if(d.decided.length){
+    h += `<h2>Already decided in the Aug. 18 primary</h2><p class="sub">These races won't appear on your November ballot.</p><ul class="decided">${d.decided.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+  }
+  h += sourcesHTML(d.sources);
+  document.getElementById('p-'+key).innerHTML = h;
+}
+function renderMeasures(){
+  const d = DATA.measures;
+  let h = `<div class="note">${esc(d.note)}</div>`;
+  for(const g of d.groups){
+    h += `<h2>${esc(g.title)}</h2><p class="sub">${esc(g.sub)}</p>`;
+    h += g.items.map(m=>`<div class="measure"><span class="tag">${esc(m.tag)}</span><h3>${esc(m.title)}</h3><div>${esc(m.what)}</div><div class="yn"><div><b>Yes means</b>${esc(m.yes)}</div><div><b>No means</b>${esc(m.no)}</div></div>${m.context?`<div class="context">${esc(m.context)}</div>`:''}${linksHTML(MEASURE_LINKS[m.tag], 'Learn more')}</div>`).join('');
+  }
+  h += sourcesHTML(d.sources);
+  document.getElementById('p-measures').innerHTML = h;
+}
+['local','state','federal'].forEach(renderCandidates);
+renderMeasures();
+
+const tabs = [...document.querySelectorAll('.tab')];
+function show(name){
+  if(!DATA[name]) name = 'local';
+  tabs.forEach(t=>t.setAttribute('aria-selected', t.dataset.tab===name));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active', p.id==='p-'+name));
+}
+tabs.forEach(t=>t.addEventListener('click',()=>{ location.hash = t.dataset.tab; show(t.dataset.tab); window.scrollTo({top:0}); }));
+window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
+show(location.hash.slice(1));
+
+// ---- profiles ----
+const modal=document.getElementById('modal'), mBody=document.getElementById('m-body');
+let lastFocus=null;
+function openProfile(name, race, party){
+  const p = PROFILES[name];
+  let h = `<div class="m-head"><div class="m-race">${esc(race)}</div><h2 id="m-name">${esc(name)}</h2>${party?`<span class="pty">${esc(party)}</span>`:''}</div>`;
+  if(p && p.bg && p.bg.length) h += `<div class="m-sec"><h4>Background</h4><ul>${p.bg.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>`;
+  if(p && p.stances && p.stances.length) h += `<div class="m-sec"><h4>Where they stand</h4>${p.stances.map(([i,t])=>`<div class="issue"><b>${esc(i)}</b>${esc(t)}</div>`).join('')}</div>`;
+  const note = p ? p.note : "We couldn't find news coverage of this candidate's positions. Vote411 may have their answers in their own words.";
+  if(note) h += `<div class="m-sec"><div class="m-note">${esc(note)}</div></div>`;
+  const src = (p && p.src) || [];
+  h += `<div class="m-sec m-src"><h4>Read more</h4>${src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">↗ ${esc(t)}</a>`).join('')}<a href="https://www.vote411.org" target="_blank" rel="noopener">↗ Vote411: candidates' answers in their own words</a></div>`;
+  h += `<div class="m-fine">These are summaries of what the candidate has said or what news outlets reported, in our own words. They aren't endorsements or ratings. Check the sources for full context.</div>`;
+  mBody.innerHTML = h;
+  lastFocus=document.activeElement; modal.hidden=false; document.body.style.overflow='hidden';
+  modal.querySelector('.x').focus();
+}
+function closeProfile(){ modal.hidden=true; document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.cname'); if(b){ openProfile(b.dataset.name,b.dataset.race,b.dataset.party); return; }
+  if(e.target.closest('[data-close]')) closeProfile();
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && !modal.hidden) closeProfile(); });
+</script>
+</body>
+</html>
